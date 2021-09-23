@@ -8,12 +8,37 @@
     "Dashboard": "Panou central",
     "Settings": "Setari",
     "User": "Profil",
-    "MyFirstMenu":"Primul meu meniu"
+    "MyFirstMenu":"Primul meu meniu",
+    "Welcome":"Bine ai venit",
+    "ConferenceListContainer":"Lista Conferinte"
   },
+  "ConferenceFilters":{
+    "ButtonText1":"Reseteaza",
+    "ButtonText2":"Aplica",
+    "StartDate":"Data start",
+    "EndDate":"Data sfarsit",
+    "Speaker":"Orator: ",
+    "Location":"Locatie: "
+},
+  "LandingPage":{
+    "Subtitle":"baga email",
+    "Hello":"Salutare",
+    "Error":"erroooooorrr"
+    },
+    "UserMenu":{
+      "User":"Utilizator"
+     },
   "Tooltips": {
     "Logout": "Iesire",
     "HidePassword": "Ascunde parola",
     "ShowPassword": "Arata parola"
+  },
+  "Conferences": {
+    
+    "Attend": "Participa",
+    "Join": "Inscrie-te",
+    "Withdraw": "Retrage-te",
+    "StatusNotSet": "Nu participi"
   },
   "Dialog": {
     "Yes": "Da",

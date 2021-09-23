@@ -14,9 +14,34 @@
   "Forbidden": "Not allowed to see this page!",
   "NavBar": {
     "Dashboard": "Dashboard",
+    "Welcome":"Welcome",
     "Settings": "Settings",
-    "MyFirstMenu":"My first menu"
+    "MyFirstMenu":"My first menu",
+    "ConferenceListContainer":"ConferenceList"
   },
+  "Conferences": {
+ 
+    "Attend": "Attend",
+    "Join": "Join",
+    "Withdraw": "Withdraw",
+    "StatusNotSet": "Not attending"
+  },
+  "ConferenceFilters":{
+      "ButtonText1":"Reset",
+      "ButtonText2":"Apply",
+      "StartDate":"Start Date",
+      "EndDate":"End Date",
+      "Speaker":"Speaker: ",
+      "Location":"Location: "
+  },
+  "LandingPage":{
+   "Subtitle":"enter email",
+  "Hello":"Hello",
+  "Error":"erroooooorr"
+  },
+  "UserMenu":{
+    "User":"user"
+   },
   "Tooltips": {
     "Logout": "Logout",
     "HidePassword": "Hide password",
