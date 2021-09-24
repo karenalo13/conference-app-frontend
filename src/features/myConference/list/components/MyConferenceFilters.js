@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next'
 import { theme } from '@bit/totalsoft_oss.react-mui.themes.blue-theme'
 import PropTypes from 'prop-types'
 import { generateDefaultFilters } from 'utils/functions'
-function ConferenceFilters(props) {
+function MyConferenceFilters(props) {
   const { t } = useTranslation()
   const { filters, onApplyFilters } = props
   const [startDate, setStartDate] = useState(filters.startDate)
@@ -53,9 +53,9 @@ function ConferenceFilters(props) {
   )
 }
 
-ConferenceFilters.propTypes = {
+MyConferenceFilters.propTypes = {
   filters: PropTypes.object,
   onApplyFilters: PropTypes.func
 }
 
-export default ConferenceFilters
+export default MyConferenceFilters

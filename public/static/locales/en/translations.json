@@ -14,34 +14,71 @@
   "Forbidden": "Not allowed to see this page!",
   "NavBar": {
     "Dashboard": "Dashboard",
-    "Welcome":"Welcome",
+    "Welcome": "Welcome",
     "Settings": "Settings",
-    "MyFirstMenu":"My first menu",
-    "ConferenceListContainer":"ConferenceList"
+    "MyFirstMenu": "My first menu",
+    "ConferenceListContainer": "ConferenceList",
+    "MyConferenceListContainer": "My Conference List"
+  },
+  "MyConferences": {
+    "Edit": "Edit",
+    "Delete": "Delete"
+  },
+  "General": {
+    "Buttons": {
+      "AddConference": "add",
+      "Save": "Save",
+      "AddSpeaker": "Add speaker",
+      "DeleteSpeaker":"Delete speaker"
+    }
+  },
+  "Speaker": {
+    "Name": "Name",
+    "Nationality": "Nationality",
+    "Rating": "Rating",
+    "MainSpeaker": "Main Speaker"
+  },
+  "Conference": {
+    "Info": "Conference info",
+    "Location": "Location",
+    "Speakers": "Speakers",
+    "Name": "Conference name",
+    "StartDate": "Start date",
+    "EndDate": "End date",
+    "Type": "Conference type",
+    "Category": "Category"
+  },
+  "Location": {
+    "Name": "Name",
+    "Address": "Address",
+    "Country": "Country",
+    "County": "County",
+    "City": "City",
+    "Latitude": "Latitude",
+    "Longitude": "Longitude"
   },
   "Conferences": {
- 
     "Attend": "Attend",
     "Join": "Join",
     "Withdraw": "Withdraw",
     "StatusNotSet": "Not attending"
   },
-  "ConferenceFilters":{
-      "ButtonText1":"Reset",
-      "ButtonText2":"Apply",
-      "StartDate":"Start Date",
-      "EndDate":"End Date",
-      "Speaker":"Speaker: ",
-      "Location":"Location: "
+  "ConferenceFilters": {
+    "ButtonText1": "Reset",
+    "ButtonText2": "Apply",
+    "StartDate": "Start Date",
+    "EndDate": "End Date",
+    "Speaker": "Speaker: ",
+    "Location": "Location: "
   },
-  "LandingPage":{
-   "Subtitle":"enter email",
-  "Hello":"Hello",
-  "Error":"erroooooorr"
+  "LandingPage": {
+    "Subtitle": "enter email",
+    "Hello": "Hello",
+    "Error": "erroooooorr"
   },
-  "UserMenu":{
-    "User":"user"
-   },
+  "UserMenu": {
+    "User": "user"
+  },
   "Tooltips": {
     "Logout": "Logout",
     "HidePassword": "Hide password",

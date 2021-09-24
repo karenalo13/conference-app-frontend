@@ -1,4 +1,3 @@
-
 const conferences = [
     {
         id: 5,
@@ -119,8 +118,3 @@ const conferences = [
 ]
 
 export default conferences;
-
-
-
-
-

@@ -8,33 +8,71 @@
     "Dashboard": "Panou central",
     "Settings": "Setari",
     "User": "Profil",
-    "MyFirstMenu":"Primul meu meniu",
-    "Welcome":"Bine ai venit",
-    "ConferenceListContainer":"Lista Conferinte"
+    "MyFirstMenu": "Primul meu meniu",
+    "Welcome": "Bine ai venit",
+    "ConferenceListContainer": "Lista Conferinte",
+    "MyConferenceListContainer": "Lista mea de Conferinte"
   },
-  "ConferenceFilters":{
-    "ButtonText1":"Reseteaza",
-    "ButtonText2":"Aplica",
-    "StartDate":"Data start",
-    "EndDate":"Data sfarsit",
-    "Speaker":"Orator: ",
-    "Location":"Locatie: "
-},
-  "LandingPage":{
-    "Subtitle":"baga email",
-    "Hello":"Salutare",
-    "Error":"erroooooorrr"
-    },
-    "UserMenu":{
-      "User":"Utilizator"
-     },
+  "ConferenceFilters": {
+    "ButtonText1": "Reseteaza",
+    "ButtonText2": "Aplica",
+    "StartDate": "Data start",
+    "EndDate": "Data sfarsit",
+    "Speaker": "Orator: ",
+    "Location": "Locatie: "
+  },
+  "LandingPage": {
+    "Subtitle": "baga email",
+    "Hello": "Salutare",
+    "Error": "erroooooorrr"
+  },
+  "UserMenu": {
+    "User": "Utilizator"
+  },
+  "General": {
+    "Buttons": {
+      "AddConference": "add dar in romana",
+      "Save": "Salveaza",
+      "AddSpeaker": "Adauga orator",
+      "DeleteSpeaker":"Sterge orator"
+    }
+   
+  },
+  "Conference": {
+    "Info": "Informatii conferinta",
+    "Location": "Locatie",
+    "Speakers": "Oratori",
+    "Name": "Nume conferinta",
+  "StartDate": "Data inceput",
+  "EndDate": "Data sfarsit",
+  "Type": "Tipul conferintei",
+  "Category": "Categorie"
+  },
+  "Location": {
+    "Name": "Nume",
+    "Address": "Adresa",
+    "Country": "Tara",
+    "County": "Judet",
+    "City": "Oras",
+    "Latitude": "Latitudine",
+    "Longitude": "Longitudine"
+  },
+  "Speaker": {
+    "Name": "Nume",
+    "Nationality": "Nationalitate",
+    "Rating": "Rating",
+    "MainSpeaker": "Orator principal"
+  },
+  "MyConferences": {
+    "Edit": "Editeaza",
+    "Delete": "Sterge"
+  },
   "Tooltips": {
     "Logout": "Iesire",
     "HidePassword": "Ascunde parola",
     "ShowPassword": "Arata parola"
   },
   "Conferences": {
-    
     "Attend": "Participa",
     "Join": "Inscrie-te",
     "Withdraw": "Retrage-te",

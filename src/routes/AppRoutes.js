@@ -10,6 +10,8 @@ import HelloWorld from 'features/helloWorld/HelloWorld'
 import Welcome from 'features/welcome/Welcome'
 import { useEmail } from 'hooks/emailHook'
 import ConferenceListContainer from 'features/conference/components/ConferenceListContainer'
+import MyConferenceListContainer from 'features/myConference/list/components/MyConferenceListContainer'
+import MyConferenceContainer from 'features/myConference/edit/components/MyConferenceContainer'
 export default function AppRoutes() {
   const [email] = useEmail()
 
@@ -28,6 +30,9 @@ export default function AppRoutes() {
       <CustomRoute exact path='/settings' component={Settings} />
       <CustomRoute isPrivate={false} exact path='/helloWorld' component={HelloWorld} />
       <CustomRoute isPrivate={false} exact path='/conferenceListContainer' component={ConferenceListContainer} />
+      <CustomRoute isPrivate={false} exact path='/myconferenceListContainer' component={MyConferenceListContainer} />
+      <CustomRoute isPrivate={false} exact path='/myconferenceListContainer/:id(new)' component={MyConferenceContainer} />
+      
       <Redirect exact from='/' to='/welcome' />
       <CustomRoute isPrivate={false} exact path='/forbidden' component={Forbidden} />
       <CustomRoute isPrivate={false} render={() => <NotFound title='PageNotFound'></NotFound>} />
