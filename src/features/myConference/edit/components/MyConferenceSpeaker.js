@@ -9,7 +9,7 @@ import MyConferenceSpeakerData from './MyConferenceSpeakerData';
 const useStyles = makeStyles(tableStyle)
 
 const MyConferenceSpeaker = props => {
-  const { speakers } = props
+  const { speakers,dispatch } = props
   
   const { t } = useTranslation();
   const classes = useStyles()
@@ -27,7 +27,7 @@ const MyConferenceSpeaker = props => {
             </Tr>
           </Thead>
           <Tbody>
-              {speakers.map((speaker,index )=>(<MyConferenceSpeakerData index={index} speaker={speaker} key={speaker?.id} />))}
+              {speakers.map((speaker)=>(<MyConferenceSpeakerData dispatch={dispatch}  speaker={speaker} key={speaker?.id} />))}
           </Tbody>
         </Table>
       </Grid>
@@ -36,7 +36,8 @@ const MyConferenceSpeaker = props => {
 }
 
 MyConferenceSpeaker.propTypes = {
-  speakers: PropTypes.array
+  speakers: PropTypes.array,
+  dispatch:PropTypes.func
 }
 MyConferenceSpeaker.defaultProps = {
   speakers: [{},{}]

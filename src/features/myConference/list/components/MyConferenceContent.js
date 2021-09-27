@@ -1,15 +1,18 @@
-import {React} from 'react'
+import {React, useCallback} from 'react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Grid } from '@material-ui/core'
 import Button from '@bit/totalsoft_oss.react-mui.button'
 import Typography from '@bit/totalsoft_oss.react-mui.typography'
+import { useHistory } from 'react-router'
 
 
 const MyConferenceContent = props => {
   const { conference } = props
-  const {  startDate, endDate, type, category } = conference
-  
+  const { id, startDate, endDate, type, category } = conference
+  const history=useHistory()
+
+  const handleEditClick=useCallback(()=>{history.push(`myconferenceListContainer/${id}`)},[history, id])
 
   const { t } = useTranslation()
 
@@ -28,7 +31,7 @@ const MyConferenceContent = props => {
       <Grid container direction='row-reverse' justifyContent='flex-start' alignItems='flex-end'>
         <Grid item>
           <Button size='sm' color='danger'>{t("MyConferences.Delete")}</Button>
-          <Button size='sm' color='info'>{t("MyConferences.Edit")}</Button>
+          <Button size='sm' color='info' onClick={handleEditClick}>{t("MyConferences.Edit")}</Button>
 
 
         </Grid>

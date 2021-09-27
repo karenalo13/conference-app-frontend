@@ -41,7 +41,7 @@ history.push('myconferenceListContainer/new')
          />}
     />)
         
-  },[setHeader, t])
+  },[HandleAddClick, setHeader, t])
 
   const handleApplyFilters = useCallback(value => {
     // we will do more stuff here

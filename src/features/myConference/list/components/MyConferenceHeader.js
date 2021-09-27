@@ -12,6 +12,7 @@ const MyConference = props => {
   const { title ,actions} = props
   const classes = useStyles()
   const { t } = useTranslation()
+  
   return (
     <Grid container justifyContent='flex-start' alignItems='center'>
       <Grid item container xs={6} sm={9} lg={9} justifyContent='flex-start'>
