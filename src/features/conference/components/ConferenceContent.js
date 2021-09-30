@@ -1,24 +1,21 @@
-import {React,useState,useCallback} from 'react'
+import { React, useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Grid } from '@material-ui/core'
 import attendeeStatus from 'constants/attendeeStatus'
 import Button from '@bit/totalsoft_oss.react-mui.button'
 import Typography from '@bit/totalsoft_oss.react-mui.typography'
-import { generateDefaultFilters } from 'utils/functions'
-
 
 const ConferenceContent = props => {
   const { conference } = props
   const { status, startDate, endDate, type, category } = conference
-  
 
   const { t } = useTranslation()
   const noStatusSet = t('Conferences.StatusNotSet')
 
-  const showJoin = status.id === attendeeStatus.Attended
-  const showWithdraw = status.id === attendeeStatus.Attended || status.id === attendeeStatus.Joined
-  const showAttend = status.id === attendeeStatus.Withdrawn
+  const showJoin = status?.id === attendeeStatus.Attended
+  const showWithdraw = status?.id === attendeeStatus.Attended || status?.id === attendeeStatus.Joined
+  const showAttend = status?.id === attendeeStatus.Withdrawn
 
   const startDateFormatted = t('DATE_FORMAT', { date: { value: startDate, format: 'DD-MM-YYYY HH:mm' } })
   const endDateFormatted = t('DATE_FORMAT', { date: { value: endDate, format: 'DD-MM-YYYY HH:mm' } })

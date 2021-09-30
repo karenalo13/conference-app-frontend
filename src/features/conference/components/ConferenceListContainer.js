@@ -1,29 +1,72 @@
-import {React,useState,useCallback} from 'react'
+import { React, useState, useCallback, useEffect } from 'react'
 import { Grid } from '@material-ui/core'
 import ConferenceFilters from './ConferenceFilters'
-import conferences from 'utils/mooks/attendeeList'
+//import conferences from 'utils/mooks/attendeeList'
 import ConferenceList from './ConferenceList'
 import LoadingFakeText from '@bit/totalsoft_oss.react-mui.fake-text/dist/LoadingFakeText'
-import { generateDefaultFilters } from 'utils/functions'
+import { extractPager, generateDefaultFilters } from 'utils/functions'
+import { useQueryWithErrorHandling } from 'hooks/errorHandling'
+import { CONFERENCE_LIST_QUERY } from '../graphql/queries/ConferenceListQuery'
+import { useEmail } from 'hooks/emailHook'
+import { useFooter } from 'providers/AreasProvider'
+import Pagination from '@bit/totalsoft_oss.react-mui.pagination'
 
 
-function ConferenceListContainer(){
-    const {data ,loading}={data:conferences,loading:false}
-    const [filters, setFilters] = useState(generateDefaultFilters())
+function ConferenceListContainer() {
+  const [email] = useEmail()
+  const [filters, setFilters] = useState(generateDefaultFilters())
 
-    const handleApplyFilters = useCallback((value) => {
-      // we will do more stuff here
-      setFilters(value)
+  const [pager, setPager] = useState({ totalCount: 0, page: 0, pageSize: 3 })
+
+  const { data, loading, refetch } = useQueryWithErrorHandling(CONFERENCE_LIST_QUERY, {
+    variables: { pager: extractPager(pager), filters, email },
+    onCompleted: result => {
+      const totalCount = result?.conferenceList?.pagination?.totalCount
+      setPager(state => ({ ...state, totalCount }))
+    }
+  })
+
+  const [, setFooter] = useFooter()
+  const handleRowsPerPageChange = useCallback(pageSize => setPager(state => ({ ...state, pageSize: parseInt(pageSize) })), [])
+
+  const handlePageChange = useCallback(page => {
+    setPager(state => ({ ...state, page }))
   }, [])
-    if (loading){ return (<LoadingFakeText lines={10}/>)}
-    return(
-    <Grid container>
-       <Grid item xs={12}>
-       <ConferenceFilters filters={filters} onApplyFilters={handleApplyFilters} />
-           <ConferenceList conferences={data}/>
-       </Grid>
-    </Grid>
+
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => () => setFooter(null), [])
+
+  useEffect(() => {
+    setFooter(
+      <Pagination
+        totalCount={pager.totalCount}
+        page={pager.page}
+        pageSize={pager.pageSize}
+        rowsPerPageOptions={[3, 6, 9, 12, 24, 100]}
+        onRowsPerPageChange={handleRowsPerPageChange}
+        onPageChange={handlePageChange}
+        onRefresh={refetch}
+      />
     )
+  }, [handlePageChange, handleRowsPerPageChange, pager.page, pager.pageSize, pager.totalCount, refetch, setFooter])
+
+  const handleApplyFilters = useCallback(value => {
+    // we will do more stuff here
+    setFilters(value)
+  }, [])
+  if (loading || !data) {
+    return <LoadingFakeText lines={10} />
+  }
+
+  return (
+    <Grid container>
+      <Grid item xs={12}>
+        <ConferenceFilters filters={filters} onApplyFilters={handleApplyFilters} />
+        <ConferenceList conferences={data?.conferenceList?.values} />
+      </Grid>
+    </Grid>
+  )
 }
 
 export default ConferenceListContainer

@@ -14,7 +14,7 @@ const yourEntityDefaultPager = {
 }
 const yourEntityDefaultListFilter = emptyObject
 
-const defaultEmailKey = { email: 'andrei.diaconu013@yahoo.ro' }
+const defaultEmailKey = { email: 'admin@totalsoft.ro' }
 export const defaults = {
   [yourEntityPager]: yourEntityDefaultPager,
   [yourEntityListFilter]: yourEntityDefaultListFilter,

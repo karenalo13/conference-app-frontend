@@ -10,7 +10,7 @@ const ConferenceList = props => {
     <Grid container spacing={2}>
       {conferences.map((conference, index) => {
         return (
-          <Grid item xs={12} lg={4}  key={conference.id}>
+          <Grid item xs={12} lg={4} key={conference?.id}>
             <ConferenceItem conference={conference} />
           </Grid>
         )
