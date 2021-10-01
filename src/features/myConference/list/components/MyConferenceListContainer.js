@@ -46,7 +46,7 @@ function MyConferenceListContainer() {
     page => {
       setPager(state => ({ ...state, page }))
     },
-    [setPager]
+    []
   )
 
   const HandleAddClick = useCallback(() => {
