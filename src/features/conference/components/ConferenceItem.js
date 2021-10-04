@@ -1,7 +1,6 @@
 import RegularCard from '@bit/totalsoft_oss.react-mui.regular-card'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Speaker } from '@material-ui/icons'
 import ConferenceSubtitle from './ConferenceSubtitle'
 import ConferenceContent from './ConferenceContent'
 

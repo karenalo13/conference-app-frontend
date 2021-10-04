@@ -1,7 +1,6 @@
 import { React, useState, useCallback, useEffect } from 'react'
 import { Grid } from '@material-ui/core'
 import MyConferenceFilters from './MyConferenceFilters'
-import conferences from 'utils/mooks/attendeeList'
 import MyConferenceList from './MyConferenceList'
 import LoadingFakeText from '@bit/totalsoft_oss.react-mui.fake-text/dist/LoadingFakeText'
 import { extractPager, generateDefaultFilters } from 'utils/functions'

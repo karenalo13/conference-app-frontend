@@ -8,7 +8,7 @@ const MyConferenceList = props => {
 
   return (
     <Grid container spacing={2}>
-      {conferences.map((conference, index) => {
+      {conferences.map((conference) => {
         return (
           <Grid item xs={12} lg={4}  key={conference.id}>
             <MyConferenceItem conference={conference} />

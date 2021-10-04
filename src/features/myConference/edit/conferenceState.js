@@ -1,4 +1,3 @@
-import React from 'react'
 import { emptyArray, emptyString } from 'utils/constants'
 
 export const initialConference = {

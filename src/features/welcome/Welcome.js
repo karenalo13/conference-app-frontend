@@ -18,7 +18,7 @@ function Welcome() {
     setEmail(e.target.value)
   }, [])
 
-  const onButtonClicked = useCallback((e) => {
+  const onButtonClicked = useCallback(() => {
   
     if (validateEmail(email)) {
      

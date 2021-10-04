@@ -7,7 +7,6 @@ import DateTime from '@bit/totalsoft_oss.react-mui.date-time'
 
 import Button from '@bit/totalsoft_oss.react-mui.button'
 import { useTranslation } from 'react-i18next'
-import { theme } from '@bit/totalsoft_oss.react-mui.themes.blue-theme'
 import PropTypes from 'prop-types'
 import { generateDefaultFilters } from 'utils/functions'
 function MyConferenceFilters(props) {
@@ -17,7 +16,6 @@ function MyConferenceFilters(props) {
   const [endDate, setEndDate] = useState(filters.endDate)
 
   const handleApplyClick = useCallback(() => onApplyFilters({ startDate, endDate }), [onApplyFilters, endDate, startDate])
-  const handleKeyPressed = useCallback(({ keyCode }) => (keyCode === 13 && handleApplyClick()), [handleApplyClick])
   const handleResetClick = useCallback(() => {
       const defaultFilters = generateDefaultFilters()
       setStartDate(defaultFilters.startDate)

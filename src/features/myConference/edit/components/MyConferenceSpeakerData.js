@@ -1,10 +1,9 @@
 import React ,{ useCallback }from 'react'
 import PropTypes from 'prop-types'
-import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
+import { Tr,  Td } from 'react-super-responsive-table'
 import tableStyles from 'assets/jss/components/tableStyle'
 import { Checkbox, makeStyles } from '@material-ui/core'
 import CustomTextField from '@bit/totalsoft_oss.react-mui.custom-text-field'
-import { CheckBox } from '@material-ui/icons'
 import DeleteButton from '@bit/totalsoft_oss.react-mui.delete-button'
 
 import { useTranslation } from 'react-i18next'

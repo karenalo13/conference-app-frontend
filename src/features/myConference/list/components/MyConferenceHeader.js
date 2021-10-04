@@ -3,7 +3,6 @@ import { Grid ,makeStyles} from '@material-ui/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles((theme) => ({ title: { ...theme.header.title, width: '100%' } }))
 
@@ -11,7 +10,6 @@ const useStyles = makeStyles((theme) => ({ title: { ...theme.header.title, width
 const MyConference = props => {
   const { title ,actions} = props
   const classes = useStyles()
-  const { t } = useTranslation()
   
   return (
     <Grid container justifyContent='flex-start' alignItems='center'>

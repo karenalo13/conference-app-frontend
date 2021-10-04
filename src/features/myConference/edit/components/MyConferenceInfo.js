@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Grid } from '@material-ui/core'
 import CustomTextField from '@bit/totalsoft_oss.react-mui.custom-text-field'
@@ -19,12 +19,11 @@ const MyConferenceInfo = props => {
   // )
 
   const handleChange = type => value => dispatch({ type: type, payload: value })
-  const handleDateChange = useCallback(value => dispatch({ type: 'date', payload: value }), [dispatch])
 
   return (
     <>
       <Grid container>
-        <Grid container item lg={9} spacing={9} fullWidth={true}>
+        <Grid container item lg={9} spacing={9}>
           <Grid item lg={4} sm={6} xs={12}>
             <CustomTextField
               fullWidth

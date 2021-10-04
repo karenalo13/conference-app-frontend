@@ -27,7 +27,7 @@ export default function AppRoutes() {
   return (
     <Switch>
       <CustomRoute isPrivate={false} exact path='/welcome' component={Welcome} />
-      <CustomRoute exact path='/settings' component={Settings} />
+      <CustomRoute isPrivate={false} exact path='/settings' component={Settings} />
       <CustomRoute isPrivate={false} exact path='/helloWorld' component={HelloWorld} />
       <CustomRoute isPrivate={false} exact path='/conferenceListContainer' component={ConferenceListContainer} />
       <CustomRoute isPrivate={false} exact path='/myconferenceListContainer' component={MyConferenceListContainer} />
