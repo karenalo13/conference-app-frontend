@@ -30,6 +30,8 @@
     "User": "Utilizator"
   },
   "General": {
+    "Congrulation":"Te-ai inscris cu succes la conferinta! Vei fi notificat cu 5 minute inainte sa inceapa. Foloseste urmatorul cod pentru a accesa conferinta: {{code}}",
+
     "Buttons": {
       "AddConference": "add dar in romana",
       "Save": "Salveaza",
@@ -76,7 +78,8 @@
     "Attend": "Participa",
     "Join": "Inscrie-te",
     "Withdraw": "Retrage-te",
-    "StatusNotSet": "Nu participi"
+    "StatusNotSet": "Nu participi",
+    "SuccessfullyAttended":"Felicitari! Te-ai inscris cu succes la conferinta! Vei fi notificat cu 5 minute inainte sa inceapa."
   },
   "Dialog": {
     "Yes": "Da",

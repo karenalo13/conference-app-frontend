@@ -10,11 +10,23 @@ import { CONFERENCE_LIST_QUERY } from '../graphql/queries/ConferenceListQuery'
 import { useEmail } from 'hooks/emailHook'
 import { useFooter } from 'providers/AreasProvider'
 import Pagination from '@bit/totalsoft_oss.react-mui.pagination'
-
+import { useMutation } from '@apollo/client'
+import ATTEND_CONFERENCE from '../graphql/mutation/AttendeeConference'
+import { useError } from 'hooks/errorHandling'
+import { DialogDisplay } from '@bit/totalsoft_oss.react-mui.kit.core'
+import ConferenceCodeModal from './ConferenceCodeModal'
+import { useToast } from '@bit/totalsoft_oss.react-mui.kit.core'
+import { useTranslation } from 'react-i18next'
+import { emptyString } from 'utils/constants'
 
 function ConferenceListContainer() {
+  const showError = useError()
   const [email] = useEmail()
+  const addToast=useToast()
+  const [code, setCode] = useState()
+  const [open, setOpen] = useState(false)
   const [filters, setFilters] = useState(generateDefaultFilters())
+  const {t}=useTranslation()
 
   const [pager, setPager] = useState({ totalCount: 0, page: 0, pageSize: 3 })
 
@@ -33,10 +45,38 @@ function ConferenceListContainer() {
     setPager(state => ({ ...state, page }))
   }, [])
 
-  
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => () => setFooter(null), [])
 
+  const [attend] = useMutation(ATTEND_CONFERENCE, {
+    onError: showError,
+    onCompleted: result => {
+      if (result?.attend) {
+        setCode(result?.attend)
+        setOpen(true)
+        addToast(t('SuccessfullyAttended',"success"))
+      }
+    }
+  })
+
+
+  const handleClose=useCallback(()=>{
+    setOpen(false)
+    setCode(emptyString)
+    refetch()
+  },[refetch])
+
+  const handleAttend = useCallback(
+    conferenceId => () => {
+      attend({
+        variables: {input:{
+          conferenceId,
+          attendeeEmail: email}
+        }
+      })
+    },
+    [attend, email]
+  )
   useEffect(() => {
     setFooter(
       <Pagination
@@ -63,7 +103,8 @@ function ConferenceListContainer() {
     <Grid container>
       <Grid item xs={12}>
         <ConferenceFilters filters={filters} onApplyFilters={handleApplyFilters} />
-        <ConferenceList conferences={data?.conferenceList?.values} />
+        <ConferenceList conferences={data?.conferenceList?.values} onAttend={handleAttend} />
+        <DialogDisplay open={open} onClose={handleClose} id='showQRCode' title={t('General.Congrulation')} content={<ConferenceCodeModal code={code} />}></DialogDisplay>
       </Grid>
     </Grid>
   )
