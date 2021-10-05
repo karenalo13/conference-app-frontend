@@ -40,6 +40,8 @@ function ConferenceListContainer() {
     }
   })
 
+  
+
   const [, setFooter] = useFooter()
   const handleRowsPerPageChange = useCallback(pageSize => setPager(state => ({ ...state, pageSize: parseInt(pageSize) })), [])
 
