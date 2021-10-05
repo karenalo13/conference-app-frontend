@@ -17,16 +17,18 @@ import { DialogDisplay } from '@bit/totalsoft_oss.react-mui.kit.core'
 import ConferenceCodeModal from './ConferenceCodeModal'
 import { useToast } from '@bit/totalsoft_oss.react-mui.kit.core'
 import { useTranslation } from 'react-i18next'
-import { emptyString } from 'utils/constants'
+import { emptyArray, emptyString } from 'utils/constants'
+import WITHDRAW_CONFERENCE from '../graphql/mutation/WithdrawConference'
 
 function ConferenceListContainer() {
   const showError = useError()
   const [email] = useEmail()
-  const addToast=useToast()
+  const addToast = useToast()
   const [code, setCode] = useState()
   const [open, setOpen] = useState(false)
+  const [suggestedConferences, setSuggestedConferences] = useState(emptyArray)
   const [filters, setFilters] = useState(generateDefaultFilters())
-  const {t}=useTranslation()
+  const { t } = useTranslation()
 
   const [pager, setPager] = useState({ totalCount: 0, page: 0, pageSize: 3 })
 
@@ -52,31 +54,59 @@ function ConferenceListContainer() {
     onError: showError,
     onCompleted: result => {
       if (result?.attend) {
-        setCode(result?.attend)
+        setCode(result?.attend?.code)
+        setSuggestedConferences(result?.attend?.suggestedConferences)
         setOpen(true)
-        addToast(t('SuccessfullyAttended',"success"))
+        addToast(t('SuccessfullyAttended', 'success'))
       }
     }
   })
 
+  const [withdraw] = useMutation(WITHDRAW_CONFERENCE, {
+    onError: showError,
+    onCompleted: result => {
+      if (result?.withdraw) {
+        addToast(t('General.Withdraw', 'success'))
+        addToast(result.withdraw)
+        refetch()
+      }
+    }
+  })
 
-  const handleClose=useCallback(()=>{
+  const handleClose = useCallback(() => {
     setOpen(false)
     setCode(emptyString)
     refetch()
-  },[refetch])
+  }, [refetch])
 
   const handleAttend = useCallback(
     conferenceId => () => {
       attend({
-        variables: {input:{
-          conferenceId,
-          attendeeEmail: email}
+        variables: {
+          input: {
+            conferenceId,
+            attendeeEmail: email
+          }
         }
       })
     },
     [attend, email]
   )
+
+  const handleWithdraw = useCallback(
+    conferenceId => () => {
+      withdraw({
+        variables: {
+          input: {
+            conferenceId,
+            attendeeEmail: email
+          }
+        }
+      })
+    },
+    [email, withdraw]
+  )
+
   useEffect(() => {
     setFooter(
       <Pagination
@@ -103,8 +133,21 @@ function ConferenceListContainer() {
     <Grid container>
       <Grid item xs={12}>
         <ConferenceFilters filters={filters} onApplyFilters={handleApplyFilters} />
-        <ConferenceList conferences={data?.conferenceList?.values} onAttend={handleAttend} />
-        <DialogDisplay open={open} onClose={handleClose} id='showQRCode' title={t('General.Congrulation')} content={<ConferenceCodeModal code={code} />}></DialogDisplay>
+        <ConferenceList conferences={data?.conferenceList?.values} onAttend={handleAttend} onWithdraw={handleWithdraw} />
+        <DialogDisplay
+          open={open}
+          onClose={handleClose}
+          id='showQRCode'
+          title={t('General.Congrulation')}
+          content={
+            <ConferenceCodeModal
+              code={code}
+              suggestedConferences={suggestedConferences}
+              onWithdraw={handleWithdraw}
+              onAttend={handleAttend}
+            />
+          }
+        ></DialogDisplay>
       </Grid>
     </Grid>
   )

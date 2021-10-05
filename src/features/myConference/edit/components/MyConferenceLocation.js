@@ -81,16 +81,18 @@ return <Grid item container lg={12} spacing={3}>
             <CustomTextField
                 label={t('Location.Latitude')}
                 fullWidth
+                isNumeric
                 value={latitude || emptyString}
-                onChange={onTextBoxChange( handleDispatch('latitude'))}
+                onChange={ handleDispatch('latitude')}
             />
         </Grid>
         <Grid item xs={12} sm={6} lg={3}>
             <CustomTextField
                 label={t('Location.Longitude')}
                 fullWidth
+                isNumeric
                 value={longitude || emptyString}
-                onChange={onTextBoxChange( handleDispatch('longitude'))}
+                onChange={ handleDispatch('longitude')}
             />
         </Grid>
     </Grid>

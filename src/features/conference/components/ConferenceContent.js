@@ -7,7 +7,7 @@ import Button from '@bit/totalsoft_oss.react-mui.button'
 import Typography from '@bit/totalsoft_oss.react-mui.typography'
 
 const ConferenceContent = props => {
-  const { conference, onAttend } = props
+  const { conference, onAttend,onWithdraw } = props
   const { status, startDate, endDate, type, category } = conference
 
   const { t } = useTranslation()
@@ -43,7 +43,7 @@ const ConferenceContent = props => {
         </Grid>
         <Grid item>
           {showWithdraw && (
-            <Button color='danger' size={'sm'}>
+            <Button color='danger' size={'sm'} onClick={onWithdraw(conference?.id)} >
               {t('Conferences.Withdraw')}
             </Button>
           )}
@@ -62,7 +62,8 @@ const ConferenceContent = props => {
 
 ConferenceContent.propTypes = {
   conference: PropTypes.object.isRequired,
-  onAttend: PropTypes.func
+  onAttend: PropTypes.func,
+  onWithdraw:PropTypes.func
 }
 
 export default ConferenceContent
