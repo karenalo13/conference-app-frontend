@@ -57,6 +57,7 @@ export const reducer = (state, action) => {
       return { ...state, speakers: state.speakers.map(s => (s.id === action.payload.id ? { ...s, name: action.payload.name } : s)) }
     case 'nationality':
     case 'rating':
+      return { ...state, speakers: state.speakers.map(s => (s.id === action.payload.id ? { ...s, ...action.payload } : s)) }
     case 'isMainSpeaker':
       return { ...state, speakers: state.speakers.map(s => (s.id === action.payload.id ? { ...s, ...action.payload } : s)) }
     case 'resetConference':
