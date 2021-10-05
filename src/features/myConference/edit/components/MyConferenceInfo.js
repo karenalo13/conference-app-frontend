@@ -35,7 +35,7 @@ const MyConferenceInfo = props => {
         </Grid>
         <Grid item lg={12} container spacing={3}>
           <Grid item lg={3} sm={6} xs={12}>
-            <DateTime label={t('Conference.StartDate')} value={startDate} onChange={handleChange('startDate')} showTime={true} />
+            <DateTime label={t('Conference.StartDate')} views={['date','hours','minutes']} value={startDate} onChange={handleChange('startDate')} showTime={true} />
           </Grid>
           <Grid item lg={3} sm={6} xs={12}>
             <DateTime label={t('Conference.EndDate')} value={endDate} onChange={handleChange('endDate')} showTime={true} />
